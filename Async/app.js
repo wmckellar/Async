@@ -35,19 +35,21 @@
 
 // countdown (5, isDone);
 
-let lunchTime = true;
+let lunchTime = false;
 
 function orderMeSomeFood() {
     return new Promise((resolve, reject) => {
         if (lunchTime == true) {
-            let meal = {lunch: "pizza", drink: "root beer"};
-            resolve (console.log(meal));
+            let meal = { lunch: "pizza", drink: "root beer" };
+            resolve(console.log(meal));
         }
         else {
-        err = "No soup for you!"
-        reject (console.log(err));
+            Promise.reject().catch(function () {
+                err = "No soup for you!"
+                throw new Error(err)
+            })
         }
     });
 };
 
-orderMeSomeFood ();
+orderMeSomeFood();
